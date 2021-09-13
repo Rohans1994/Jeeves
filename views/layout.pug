@@ -18,7 +18,13 @@ html
               span.sr-only (current)
           if user
             li.nav-item
-              a.nav-link(href='/articles/add') Add Article
+              a.nav-link(href='/topic/add') Add Topic
+            li.nav-item
+              a.nav-link(href='/topic') View Topic
+            li.nav-item
+              a.nav-link(href='/comment') View Comments
+            li.nav-item
+              a.nav-link(href='/posts') View Posts
         ul.nav.navbar-nav.navbar-right
           if user
             li
@@ -42,7 +48,7 @@ html
       br
       hr
       footer
-        p copyright &copy; 2018
+        p copyright &copy; 2021
     script(src='/bower_components/bootstrap/js/tests/vendor/jquery-1.9.1.min.js')
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(src='/js/main.js')

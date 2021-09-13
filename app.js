@@ -6,8 +6,9 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const multer = require('multer');
 const config = require('./config/database');
-
+global._ = require('underscore');
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -27,6 +28,8 @@ const app=express();
 
 //Bring in models
 let Article = require('./models/article');
+let Topic = require('./models/topic');
+
 
 //load view engine
 app.set('views',path.join(__dirname,'views'));
@@ -86,24 +89,25 @@ app.get('*', function(req, res, next){
 });
 
 //home route
-app.get('/',function(req, res){
-  Article.find({},function(err,articles){
+app.get('/',async function(req, res){
+  await Topic.find({},function(err,topics){
     if (err) {
       console.log(err);
     }else {
-      res.render('index',{
-        title:'Articles',
-        articles:articles
+      res.render('index_topic',{
+        title:'Kindly add new topics for discussion',
+        topics:topics
       });
     }
   });
 });
 
 // Route files
-let articles = require('./routes/articles');
-let users = require('./routes/users');
-app.use('/articles',articles);
-app.use('/users',users);
+app.use('/articles',require('./routes/articles'));
+app.use('/users',require('./routes/users'));
+app.use('/posts',require('./routes/posts'));
+app.use('/topic',require('./routes/topic'));
+app.use('/comment',require('./routes/comments'));
 
 //start server
 app.listen(3000, function()

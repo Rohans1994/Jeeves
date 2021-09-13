@@ -12,11 +12,12 @@ router.get('/register', function(req,res) {
 
 // Register Process
 router.post('/register', function(req,res) {
-  const name = req.body.name;
+  /* onst name = req.body.name;
   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
-  const password2 = req.body.password2;
+  const password2 = req.body.password2; */
+  const {name, email, username, password, password2} = req.body
 
   req.checkBody('name','Name is required').notEmpty();
   req.checkBody('email','Email is required').notEmpty();
