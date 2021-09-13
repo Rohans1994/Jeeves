@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= topic.title
+  h5 Posted by #{author}
+  if user
+    ul.list-group
+      each post, i in posts
+        li.list-group-item
+          h3=post.name
+          a.btn.btn-primary(href='/comment/add/'+user._id+'/'+post._id) Add Comments
+  if user
+    a.btn.btn-primary(href='/posts/add/'+topic._id) Add Posts

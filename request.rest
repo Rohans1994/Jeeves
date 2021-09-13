@@ -1,0 +1,8 @@
+GET http://localhost:3000/topic?page=1&limit=3
+
+###
+
+GET http://localhost:3000/posts?page=1&limit=2
+
+###
+GET http://localhost:3000/comment?page=2&limit=2

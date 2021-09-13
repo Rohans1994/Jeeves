@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method='POST', action='/comment/add/'+userId+'/'+postId)
+    #form-group
+      label Comment:
+      input.form-control(name='comment',type='text')
+    //-#form-group
+      label Body:
+      textarea.form-control(name='body')  
+    br    
+    input.btn.btn-primary(type='submit',value='submit')
+    

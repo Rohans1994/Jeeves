@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= 
+  h5 Written by #{author}
+  if user
+    ul.list-group
+      each val, i in posts
+        li.list-group-item
+          h3=post.name
